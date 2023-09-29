@@ -5,8 +5,18 @@ import os
 
 from datetime import datetime, timedelta
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as options
+from selenium.webdriver.firefox.service import Service
 from bs4 import BeautifulSoup
 from time import sleep
+
+''' set the parms that will be used in each game
+'''
+driver_path = r'c:\users\alan\gecko\geckodriver.exe'
+binary_path = r'c:\program files\mozilla firefox\firefox.exe'
+ops = options()
+ops.binary_location = binary_path
+serv = Service(driver_path)
 
 month_name = {
     'JAN': 'January',
@@ -64,12 +74,12 @@ def scrape_fantasy_winners():
     '''
 
     site = 'https://www.calottery.com/draw-games/fantasy-5#section-content-2-3'
-    driver = webdriver.Firefox(executable_path=r'c:\users\alan\gecko\geckodriver.exe')
-    driver.get(site)
+    browser = webdriver.Firefox(service=serv, options=ops)
+    browser.get(site)
 
-    html = driver.page_source
+    html = browser.page_source
     sleep(5)
-    driver.close()
+    browser.close()
 
     soup = BeautifulSoup(html, 'html.parser')
 
