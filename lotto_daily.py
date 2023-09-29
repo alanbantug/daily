@@ -190,12 +190,12 @@ def scrape_super_winners():
     '''
 
     site = 'https://www.calottery.com/draw-games/superlotto-plus#section-content-2-3'
-    driver = webdriver.Firefox(executable_path=r'c:\users\alan\gecko\geckodriver.exe')
-    driver.get(site)
+    browser = webdriver.Firefox(service=serv, options=ops)
+    browser.get(site)
 
-    html = driver.page_source
+    html = browser.page_source
     sleep(5)
-    driver.close()
+    browser.close()
 
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -272,12 +272,12 @@ def scrape_mega_winners():
     '''
 
     site = 'https://www.calottery.com/draw-games/mega-millions#section-content-2-3'
-    driver = webdriver.Firefox(executable_path=r'c:\users\alan\gecko\geckodriver.exe')
-    driver.get(site)
+    browser = webdriver.Firefox(service=serv, options=ops)
+    browser.get(site)
 
-    html = driver.page_source
+    html = browser.page_source
     sleep(5)
-    driver.close()
+    browser.close()
 
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -354,12 +354,12 @@ def scrape_power_winners():
     '''
 
     site = 'https://www.calottery.com/draw-games/powerball#section-content-2-3'
-    driver = webdriver.Firefox(executable_path=r'c:\users\alan\gecko\geckodriver.exe')
-    driver.get(site)
+    browser = webdriver.Firefox(service=serv, options=ops)
+    browser.get(site)
 
-    html = driver.page_source
+    html = browser.page_source
     sleep(5)
-    driver.close()
+    browser.close()
 
     soup = BeautifulSoup(html, 'html.parser')
 
